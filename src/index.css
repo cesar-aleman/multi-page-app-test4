@@ -21,8 +21,8 @@ code {
   background-color: grey;
   padding: 10px;
   border-bottom: 5px solid red;
-  width: 50%;
-  text-align: center;
+  width: 60%;
+  float: right;
 }
 
 .links:hover {

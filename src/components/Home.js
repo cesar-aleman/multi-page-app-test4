@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import diffPages from "../Data";
 
 import "../index.css";
+import "./Home.css";
 
 const List = ({ data }) => {
   const [value, setValue] = useState("");
@@ -10,11 +11,13 @@ const List = ({ data }) => {
   return (
     <div>
       <input
+        className="searching"
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-
+      <br />
+      <br />
       {data
         .filter((item) => {
           if (!value) return true;
@@ -43,14 +46,31 @@ const List = ({ data }) => {
 };
 
 function Home() {
+  const someStyle = {
+    display: "none",
+  };
   return (
     <div className="Home">
-      <List data={diffPages} />
+      <button onClick={toggle}> Search </button>
+      <div id="myDIV" style={someStyle}>
+        <List data={diffPages} />
+      </div>
     </div>
   );
+}
+
+function toggle() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 }
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<Home />, rootElement);
 
 export default Home;
+
+//put an id on the input to show only that and hide the rest of the div
